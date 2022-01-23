@@ -1,27 +1,21 @@
 name: 'Laravel Forge Deploy Action'
 description: 'Trigger Laravel Forge Deployments with Github Actions'
-author: 'jbrooksuk'
+author: 'ItsNash0'
 branding:
   icon: upload-cloud
   color: green
 inputs:
   trigger_url:
     description: 'The Deployment Trigger URL'
-    required: false
-  api_key:
-    description: 'Laravel Forge API Key'
-    required: false
-  server_id:
-    description: 'Laravel Forge Server ID'
-    required: false
-  site_id:
-    description: 'Laravel Forge Site ID'
-    required: false
+    required: true
+  site_label:
+    description: 'A label for the site'
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
     TRIGGER_URL: ${{ inputs.trigger_url }}
-    API_KEY: ${{ inputs.api_key }}
-    SERVER_ID: ${{ inputs.server_id }}
-    SITE_ID: ${{ inputs.site_id }}
+    SITE_LABEL: ${{ inputs.site_label }}
+
